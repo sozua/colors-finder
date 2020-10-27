@@ -1,0 +1,39 @@
+:root {
+  --bg: #040303;
+  --bg-alt: #222;
+  --text: #fff;
+  --text-alt: #cacaca;
+}
+
+body,
+button,
+textarea,
+input {
+  font-family: "HK Grotesk", "Helvetica", "Inter", -apple-system,
+    BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
+    Droid Sans, Helvetica Neue, sans-serif;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button:hover {
+  cursor: pointer;
+}

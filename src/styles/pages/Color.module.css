@@ -1,0 +1,37 @@
+.container {
+  width: 1440px;
+  margin: 96px auto 0 auto;
+}
+
+.container a {
+  font-weight: 600;
+  font-size: 1.125em;
+}
+
+.goBack {
+  display: flex;
+  align-items: center;
+}
+
+.goBack svg {
+  margin-right: 4px;
+  fill: var(--text);
+}
+
+.container > h1 {
+  font-size: 4em;
+  line-height: 100%;
+  font-weight: bold;
+  color: var(--text);
+}
+
+.container > h1 > span {
+  color: var(--text-alt);
+}
+
+.colorsContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin-bottom: 96px;
+}
