@@ -29,7 +29,7 @@ h1.cta {
   grid-template-columns: repeat(2, 1fr);
   justify-content: space-between;
   align-items: center;
-  column-gap: 32px;
+  gap: 32px;
   width: 100%;
 }
 
@@ -73,4 +73,32 @@ h1.cta {
   height: 720px;
   border-radius: 16px;
   background: linear-gradient(300deg, #3207c1 2.88%, #c9f53a 100%);
+}
+
+@media (max-width: 1504px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (max-width: 1344px) {
+  .container {
+    max-width: 960px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "textAndInputWrapper gradientBox";
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    max-width: 80%;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-areas: "textAndInputWrapper";
+  }
+  .gradientBox {
+    display: none;
+  }
+  .inputWrapper {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
