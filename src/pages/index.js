@@ -8,6 +8,20 @@ export default function Home() {
   const [colorInput, setColorInput] = useState("");
   const router = useRouter();
 
+  const placeholders = [
+    "Pêssego",
+    "Morango",
+    "iFood",
+    "Descomplica",
+    "Água",
+    "Deserto",
+  ];
+
+  function getRandomPlaceholder() {
+    const aleatorio = Math.floor(Math.random() * placeholders.length);
+    return placeholders[aleatorio];
+  }
+
   const searchColor = (e) => {
     e.preventDefault();
 
@@ -24,10 +38,10 @@ export default function Home() {
         </h1>
         <div className={styles.inputWrapper}>
           <form onSubmit={searchColor}>
-            <label htmlFor='color'>Cor base</label>
+            <label htmlFor='color'>O que você procura</label>
             <input
               type='text'
-              placeholder='Azul queimado'
+              placeholder={getRandomPlaceholder()}
               id='color'
               onChange={(e) => setColorInput(e.target.value)}
             />
