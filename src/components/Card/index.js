@@ -69,10 +69,13 @@ export default function Card({ color: originalColor }) {
           {colorCodeType === "hex" ? `${color}` : `${colorCodeType}(${color})`}
         </h2>
         <div className={styles.buttons}>
-          <button onClick={copyColorCode}>
+          <button onClick={copyColorCode} title='Copiar código de cor'>
             <Copy />
           </button>
-          <button onClick={changeColorCodeType}>
+          <button
+            onClick={changeColorCodeType}
+            title='Alterar tipo código de cor (hex, rgb, hsl)'
+          >
             <ChangeType />
           </button>
         </div>
