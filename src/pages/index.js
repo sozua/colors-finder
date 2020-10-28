@@ -44,7 +44,7 @@ export default function Home() {
         <motion.div
           className={styles.inputWrapper}
           variants={defaultVariant}
-          transition={defaultTransitionWithDelay(0.2)}
+          transition={defaultTransition}
         >
           <form onSubmit={searchColor}>
             <label htmlFor='color'>Qual cor você procura?</label>
@@ -61,7 +61,7 @@ export default function Home() {
       <motion.div
         className={styles.gradientBox}
         variants={defaultVariant}
-        transition={defaultTransitionWithDurationAndDelay(1.2)}
+        transition={defaultTransition}
       />
     </motion.div>
   );

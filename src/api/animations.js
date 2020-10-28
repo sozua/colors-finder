@@ -13,7 +13,7 @@ export const defaultVariant = {
 export const showUpVariants = {
   initial: {
     opacity: 0,
-    y: 30,
+    y: 15,
   },
   animate: {
     opacity: 1,
@@ -44,6 +44,6 @@ export const defaultTransitionWithDurationAndDelay = (
 };
 
 export const defaultTransition = {
-  duration: 0.8,
+  duration: 1.2,
   ease: [0.6, -0.05, 0.01, 0.9],
 };
