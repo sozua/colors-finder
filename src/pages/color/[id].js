@@ -2,12 +2,12 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { searchColor } from "../../api/color";
+import styles from "../../styles/pages/Color.module.css";
 
 import Card from "../../components/Card";
 import Link from "next/link";
 import SnackbarProvider from "react-simple-snackbar";
 
-import styles from "../../styles/pages/Color.module.css";
 import ArrowLeft from "../../icons/arrow-left";
 import { motion } from "framer-motion";
 

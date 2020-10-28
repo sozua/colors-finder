@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@types/axios": "^0.14.0",
+    "@zeit/next-css": "^1.0.1",
     "color-convert": "^2.0.1",
     "framer-motion": "^2.9.4",
     "next": "9.5.5",
