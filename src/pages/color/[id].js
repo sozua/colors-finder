@@ -77,6 +77,7 @@ const colorCardsVariants = {
 
 export default function ColorPage() {
   const [colors, setColors] = useState([]);
+  const [pageName, setPagename] = useState("");
   const router = useRouter();
   const { id } = router.query;
   const colorData = searchColor(id);
@@ -87,6 +88,7 @@ export default function ColorPage() {
       const { colors: colorsData } = await colorData;
       setColors(colorsData);
     }
+    if (!pageName && id) setPagename(id);
     if (id) active();
   }, [id]);
 
@@ -104,7 +106,7 @@ export default function ColorPage() {
             <Link href='/'>Voltar</Link>
           </motion.div>
           <motion.h1 variants={titleVariants}>
-            Cores encontradas para <span>{id}</span>:
+            Cores encontradas para <span>{pageName}</span>:
           </motion.h1>
           <div className={styles.colorsContainer}>
             {colors.length > 0
