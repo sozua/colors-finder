@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import styles from "../styles/Home.module.css";
+import styles from "../styles/pages/Home.module.css";
 import { motion } from "framer-motion";
 
 const ctaTextVariants = {

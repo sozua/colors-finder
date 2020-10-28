@@ -28,6 +28,7 @@
 }
 
 h1.cta {
+  margin: 0;
   font-weight: bold;
   font-size: 4em;
 }
