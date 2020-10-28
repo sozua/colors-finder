@@ -1,26 +1,58 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 import styles from "../styles/Home.module.css";
+import { motion } from "framer-motion";
+
+const ctaTextVariants = {
+  initial: {
+    opacity: 0,
+    y: 20,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.35,
+      ease: [0.0, 0.0, 0.2, 1],
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      duration: 0.25,
+      ease: [0.4, 0, 1, 1],
+    },
+  },
+};
+
+const formAndBoxVariants = {
+  initial: {
+    opacity: 0,
+    y: 5,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.35,
+      ease: [0.0, 0.0, 0.2, 1],
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      duration: 0.25,
+      ease: [0.4, 0, 1, 1],
+    },
+  },
+};
 
 export default function Home() {
   const [colorInput, setColorInput] = useState("");
+
   const router = useRouter();
-
-  const placeholders = [
-    "Pêssego",
-    "Morango",
-    "iFood",
-    "Descomplica",
-    "Água",
-    "Deserto",
-  ];
-
-  function getRandomPlaceholder() {
-    const aleatorio = Math.floor(Math.random() * placeholders.length);
-    return placeholders[aleatorio];
-  }
 
   const searchColor = (e) => {
     e.preventDefault();
@@ -31,25 +63,36 @@ export default function Home() {
   };
 
   return (
-    <div className={styles.container}>
+    <motion.div
+      className={styles.container}
+      initial='initial'
+      animate='animate'
+      exit='exit'
+    >
       <div className={styles.textAndInputWrapper}>
-        <h1 className={styles.cta}>
+        <motion.h1 className={styles.cta} variants={ctaTextVariants}>
           Encontre as cores de qualquer coisa em um clique
-        </h1>
-        <div className={styles.inputWrapper}>
+        </motion.h1>
+        <motion.div
+          className={styles.inputWrapper}
+          variants={formAndBoxVariants}
+        >
           <form onSubmit={searchColor}>
-            <label htmlFor='color'>O que você procura</label>
+            <label htmlFor='color'>Qual cor você procura?</label>
             <input
               type='text'
-              placeholder={getRandomPlaceholder()}
+              placeholder='Pêssego'
               id='color'
               onChange={(e) => setColorInput(e.target.value)}
             />
           </form>
           <Link href={`/color/${colorInput}`}>Procurar</Link>
-        </div>
+        </motion.div>
       </div>
-      <div className={styles.gradientBox}></div>
-    </div>
+      <motion.div
+        className={styles.gradientBox}
+        variants={formAndBoxVariants}
+      />
+    </motion.div>
   );
 }
