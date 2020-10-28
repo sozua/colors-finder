@@ -3,14 +3,51 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 import styles from "../styles/Home.module.css";
-import {
-  defaultTransitionWithDurationAndDelay,
-  defaultTransitionWithDelay,
-  defaultVariant,
-  showUpVariants,
-  defaultTransition,
-} from "../api/animations";
 import { motion } from "framer-motion";
+
+const ctaTextVariants = {
+  initial: {
+    opacity: 0,
+    y: 20,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.35,
+      ease: [0.0, 0.0, 0.2, 1],
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      duration: 0.25,
+      ease: [0.4, 0, 1, 1],
+    },
+  },
+};
+
+const formAndBoxVariants = {
+  initial: {
+    opacity: 0,
+    y: 5,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.35,
+      ease: [0.0, 0.0, 0.2, 1],
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      duration: 0.25,
+      ease: [0.4, 0, 1, 1],
+    },
+  },
+};
 
 export default function Home() {
   const [colorInput, setColorInput] = useState("");
@@ -30,21 +67,15 @@ export default function Home() {
       className={styles.container}
       initial='initial'
       animate='animate'
-      exit={{ opacity: 0 }}
-      transition={{ defaultTransition }}
+      exit='exit'
     >
       <div className={styles.textAndInputWrapper}>
-        <motion.h1
-          className={styles.cta}
-          variants={showUpVariants}
-          transition={defaultTransition}
-        >
+        <motion.h1 className={styles.cta} variants={ctaTextVariants}>
           Encontre as cores de qualquer coisa em um clique
         </motion.h1>
         <motion.div
           className={styles.inputWrapper}
-          variants={defaultVariant}
-          transition={defaultTransition}
+          variants={formAndBoxVariants}
         >
           <form onSubmit={searchColor}>
             <label htmlFor='color'>Qual cor você procura?</label>
@@ -60,8 +91,7 @@ export default function Home() {
       </div>
       <motion.div
         className={styles.gradientBox}
-        variants={defaultVariant}
-        transition={defaultTransition}
+        variants={formAndBoxVariants}
       />
     </motion.div>
   );
