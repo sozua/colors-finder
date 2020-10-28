@@ -1,26 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 import styles from "../styles/Home.module.css";
+import {
+  defaultTransitionWithDurationAndDelay,
+  defaultTransitionWithDelay,
+  defaultVariant,
+  showUpVariants,
+  defaultTransition,
+} from "../api/animations";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const [colorInput, setColorInput] = useState("");
   const router = useRouter();
-
-  const placeholders = [
-    "Pêssego",
-    "Morango",
-    "iFood",
-    "Descomplica",
-    "Água",
-    "Deserto",
-  ];
-
-  function getRandomPlaceholder() {
-    const aleatorio = Math.floor(Math.random() * placeholders.length);
-    return placeholders[aleatorio];
-  }
 
   const searchColor = (e) => {
     e.preventDefault();
@@ -31,25 +25,42 @@ export default function Home() {
   };
 
   return (
-    <div className={styles.container}>
+    <motion.div
+      className={styles.container}
+      initial='initial'
+      animate='animate'
+      exit='exit'
+    >
       <div className={styles.textAndInputWrapper}>
-        <h1 className={styles.cta}>
+        <motion.h1
+          className={styles.cta}
+          variants={showUpVariants}
+          transition={defaultTransition}
+        >
           Encontre as cores de qualquer coisa em um clique
-        </h1>
-        <div className={styles.inputWrapper}>
+        </motion.h1>
+        <motion.div
+          className={styles.inputWrapper}
+          variants={defaultVariant}
+          transition={defaultTransitionWithDelay(0.2)}
+        >
           <form onSubmit={searchColor}>
             <label htmlFor='color'>O que você procura</label>
             <input
               type='text'
-              placeholder={getRandomPlaceholder()}
+              placeholder='Pêssego'
               id='color'
               onChange={(e) => setColorInput(e.target.value)}
             />
           </form>
           <Link href={`/color/${colorInput}`}>Procurar</Link>
-        </div>
+        </motion.div>
       </div>
-      <div className={styles.gradientBox}></div>
-    </div>
+      <motion.div
+        className={styles.gradientBox}
+        variants={defaultVariant}
+        transition={defaultTransitionWithDurationAndDelay(1.2)}
+      />
+    </motion.div>
   );
 }

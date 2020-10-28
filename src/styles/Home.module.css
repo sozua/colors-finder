@@ -72,7 +72,10 @@ h1.cta {
   grid-area: gradientBox;
   height: 720px;
   border-radius: 16px;
-  background: linear-gradient(300deg, #3207c1 2.88%, #c9f53a 100%);
+  /* background: linear-gradient(-45deg, #f2709c, #ff9472, #5a35d4);
+  background-size: 400% 400%;
+  animation: GradientAnimation 30s ease infinite; */
+  background: linear-gradient(-45deg, #3207c1 0%, #c9f53a 100%);
 }
 
 @media (max-width: 1504px) {
@@ -100,5 +103,17 @@ h1.cta {
   }
   .inputWrapper {
     grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@keyframes GradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
