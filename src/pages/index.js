@@ -63,36 +63,38 @@ export default function Home() {
   };
 
   return (
-    <motion.div
-      className={styles.container}
-      initial='initial'
-      animate='animate'
-      exit='exit'
-    >
-      <div className={styles.textAndInputWrapper}>
-        <motion.h1 className={styles.cta} variants={ctaTextVariants}>
-          Encontre as cores de qualquer coisa em um clique
-        </motion.h1>
-        <motion.div
-          className={styles.inputWrapper}
-          variants={formAndBoxVariants}
-        >
-          <form onSubmit={searchColor}>
-            <label htmlFor='color'>Qual cor você procura?</label>
-            <input
-              type='text'
-              placeholder='Pêssego'
-              id='color'
-              onChange={(e) => setColorInput(e.target.value)}
-            />
-          </form>
-          <Link href={`/color/${colorInput}`}>Procurar</Link>
-        </motion.div>
-      </div>
+    <div className={styles.generalWrapper}>
       <motion.div
-        className={styles.gradientBox}
-        variants={formAndBoxVariants}
-      />
-    </motion.div>
+        className={styles.container}
+        initial='initial'
+        animate='animate'
+        exit='exit'
+      >
+        <div className={styles.textAndInputWrapper}>
+          <motion.h1 className={styles.cta} variants={ctaTextVariants}>
+            Encontre as cores de qualquer coisa em um clique
+          </motion.h1>
+          <motion.div
+            className={styles.inputWrapper}
+            variants={formAndBoxVariants}
+          >
+            <form onSubmit={searchColor}>
+              <label htmlFor='color'>Qual cor você procura?</label>
+              <input
+                type='text'
+                placeholder='Pêssego'
+                id='color'
+                onChange={(e) => setColorInput(e.target.value)}
+              />
+            </form>
+            <Link href={`/color/${colorInput}`}>Procurar</Link>
+          </motion.div>
+        </div>
+        <motion.div
+          className={styles.gradientBox}
+          variants={formAndBoxVariants}
+        />
+      </motion.div>
+    </div>
   );
 }
