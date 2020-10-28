@@ -14,6 +14,7 @@ import { motion } from "framer-motion";
 
 export default function Home() {
   const [colorInput, setColorInput] = useState("");
+
   const router = useRouter();
 
   const searchColor = (e) => {
@@ -29,7 +30,8 @@ export default function Home() {
       className={styles.container}
       initial='initial'
       animate='animate'
-      exit='exit'
+      exit={{ opacity: 0 }}
+      transition={{ defaultTransition }}
     >
       <div className={styles.textAndInputWrapper}>
         <motion.h1
@@ -45,7 +47,7 @@ export default function Home() {
           transition={defaultTransitionWithDelay(0.2)}
         >
           <form onSubmit={searchColor}>
-            <label htmlFor='color'>O que você procura</label>
+            <label htmlFor='color'>Qual cor você procura?</label>
             <input
               type='text'
               placeholder='Pêssego'
