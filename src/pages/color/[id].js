@@ -1,3 +1,4 @@
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { searchColor } from "../../api/color";
@@ -9,16 +10,77 @@ import SnackbarProvider from "react-simple-snackbar";
 import styles from "../../styles/pages/Color.module.css";
 import ArrowLeft from "../../icons/arrow-left";
 import { motion } from "framer-motion";
-import {
-  defaultTransitionWithDurationAndDelay,
-  defaultVariant,
-} from "../../api/animations";
+
+const backButtonVariants = {
+  initial: {
+    opacity: 0,
+    y: 5,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.35,
+      ease: [0.0, 0.0, 0.2, 1],
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      duration: 0.25,
+      ease: [0.4, 0, 1, 1],
+    },
+  },
+};
+
+const titleVariants = {
+  initial: {
+    opacity: 0,
+    y: 15,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.35,
+      ease: [0.0, 0.0, 0.2, 1],
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      duration: 0.25,
+      ease: [0.4, 0, 1, 1],
+    },
+  },
+};
+
+const colorCardsVariants = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+    transition: {
+      duration: 0.35,
+      ease: [0.0, 0.0, 0.2, 1],
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      duration: 0.25,
+      ease: [0.4, 0, 1, 1],
+    },
+  },
+};
 
 export default function ColorPage() {
   const [colors, setColors] = useState([]);
   const router = useRouter();
   const { id } = router.query;
   const colorData = searchColor(id);
+  const skeletonElements = Array.apply(null, Array(20));
 
   useEffect(() => {
     async function active() {
@@ -29,37 +91,42 @@ export default function ColorPage() {
   }, [id]);
 
   return (
-    <SnackbarProvider>
-      <motion.div
-        className={styles.container}
-        initial='initial'
-        animate='animate'
-        exit={{ opacity: 0 }}
-      >
-        <div className={styles.goBack}>
-          <ArrowLeft />
-          <Link href='/'>Voltar</Link>
-        </div>
-        <motion.h1
-          variants={defaultVariant}
-          transition={defaultTransitionWithDurationAndDelay(4)}
-        >
-          Cores encontradas para <span>{id}</span>:
-        </motion.h1>
+    <SkeletonTheme color='#222' highlightColor='#444'>
+      <SnackbarProvider>
         <motion.div
-          className={styles.colorsContainer}
-          variants={defaultVariant}
-          transition={defaultTransitionWithDurationAndDelay(0.2)}
+          className={styles.container}
+          initial='initial'
+          animate='animate'
+          exit='exit'
         >
-          {colors ? (
-            colors.map((color, index) => {
-              return <Card color={color.color} key={index} />;
-            })
-          ) : (
-            <h1>Carregando</h1>
-          )}
+          <motion.div className={styles.goBack} variants={backButtonVariants}>
+            <ArrowLeft />
+            <Link href='/'>Voltar</Link>
+          </motion.div>
+          <motion.h1 variants={titleVariants}>
+            Cores encontradas para <span>{id}</span>:
+          </motion.h1>
+          <div className={styles.colorsContainer}>
+            {colors.length > 0
+              ? colors.map((color, index) => {
+                  return (
+                    <motion.span key={index} variants={colorCardsVariants}>
+                      <Card color={color.color} />
+                    </motion.span>
+                  );
+                })
+              : skeletonElements.map((skeletonElement, index) => {
+                  return (
+                    <Skeleton
+                      key={index}
+                      height={400}
+                      style={{ borderRadius: 8 }}
+                    />
+                  );
+                })}
+          </div>
         </motion.div>
-      </motion.div>
-    </SnackbarProvider>
+      </SnackbarProvider>
+    </SkeletonTheme>
   );
 }
