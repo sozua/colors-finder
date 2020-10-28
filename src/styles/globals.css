@@ -16,7 +16,7 @@ input {
     Droid Sans, Helvetica Neue, sans-serif;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1504px) {
   body {
     font-size: 80%;
   }
