@@ -1,0 +1,35 @@
+.errorPageContainer {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.errorPageContainer h1 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+  color: transparent;
+  font-size: 60vh;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+}
+
+.errorPageContainer span {
+  align-self: flex-end;
+  text-align: center;
+  margin-bottom: 196px;
+}
+
+.errorPageContainer span p {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.errorPageContainer span a {
+  color: var(--text-alt);
+  border-bottom: 1px solid var(--text-alt);
+}
