@@ -2,7 +2,7 @@
     Colors Finder
 </h1>
 <h4 align="center">
-  ✨Um buscador de cores feito em React.js.✨
+  ✨Um buscador de cores web feito em Next.js.✨
 </h4>
 <p align="center">
   <a href="#man_technologist-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
